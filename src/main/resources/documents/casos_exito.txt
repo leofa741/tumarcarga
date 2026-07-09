@@ -1,0 +1,26 @@
+CASOS DE ÉXITO DE TUMARCA.AR
+
+Cliente: Panadería "El Horno de Oro" (Buenos Aires)
+Servicio: E-commerce + Branding
+Descripción: Desarrollamos una tienda online completa para una panadería artesanal. Implementamos catálogo de productos con fotos profesionales, carrito de compras, integración con MercadoPago para pagos, y sistema de gestión de pedidos. El branding incluyó logo, packaging, y material de marketing.
+Resultado: Aumento del 300% en ventas online en los primeros 3 meses. Reducción del 50% en tiempo de gestión de pedidos gracias al sistema automatizado.
+
+Cliente: Estudio Jurídico "Martínez & Asociados" (CABA)
+Servicio: Sitio Corporativo + SEO
+Descripción: Creamos un sitio web profesional para un estudio jurídico con 15 páginas de contenido, blog integrado para artículos legales, y optimización SEO completa.
+Resultado: Posicionamiento en primera página de Google para keywords clave del sector. Aumento del 200% en consultas orgánicas.
+
+Cliente: Startup Tech "InnovateAR"
+Servicio: App Móvil + Sistema Web
+Descripción: Desarrollamos una aplicación móvil híbrida (React Native) para gestión de proyectos, con backend en Node.js y base de datos PostgreSQL. Incluye notificaciones push, chat en tiempo real, y dashboard de métricas.
+Resultado: App lanzada en App Store y Google Play con más de 10,000 descargas en el primer mes.
+
+Cliente: Tienda de Ropa "Style Boutique"
+Servicio: E-commerce + Marketing Digital
+Descripción: Tienda online con catálogo de 500+ productos, integración con sistemas de envío (Correo Argentino, Andreani), y campañas de marketing en Instagram y Facebook.
+Resultado: 15,000 visitas mensuales al sitio. Conversión del 3.5% (promedio del sector: 2%). ROI de 400% en campañas publicitarias.
+
+Cliente: Consultora "Business Solutions"
+Servicio: Sistema Web a Medida
+Descripción: Desarrollo de un sistema CRM personalizado para gestión de clientes, proyectos, y facturación. Incluye generación automática de reportes, integración con AFIP para facturación electrónica, y panel de administración completo.
+Resultado: Reducción del 70% en tiempo administrativo. Automatización completa del proceso de facturación.

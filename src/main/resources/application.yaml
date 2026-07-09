@@ -1,0 +1,22 @@
+spring:
+  ai:
+    openai:
+      api-key: ${GROQ_API_KEY}
+      base-url: https://api.groq.com/openai  # ← QUITA el /v1 del final
+      chat:
+        options:
+          model: llama-3.3-70b-versatile
+          temperature: 0.7
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/tumarca
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  sql:
+    init:
+      mode: always
+
+server:
+  port: 8080

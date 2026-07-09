@@ -1,0 +1,49 @@
+SOBRE TUMARCA.AR
+
+Quiénes Somos:
+Tumarca.ar es una agencia digital ubicada en Buenos Aires, Argentina, especializada en desarrollo web, aplicaciones móviles, branding y marketing digital. Nuestro equipo está compuesto por desarrolladores, diseñadores, y especialistas en marketing con más de 10 años de experiencia en el sector.
+
+Nuestra Misión:
+Ayudar a empresas y emprendedores a establecer una presencia digital sólida y efectiva, utilizando las últimas tecnologías y mejores prácticas del mercado.
+
+Nuestra Visión:
+Ser la agencia digital de referencia en Argentina, reconocida por la calidad de nuestros servicios, la innovación en nuestras soluciones, y el compromiso con el éxito de nuestros clientes.
+
+Valores:
+- Calidad: Entregamos productos de alta calidad, probados y optimizados.
+- Innovación: Estamos siempre actualizados con las últimas tendencias tecnológicas.
+- Compromiso: Nos comprometemos con los objetivos de cada cliente.
+- Transparencia: Comunicación clara y honesta en cada etapa del proyecto.
+- Resultados: Nos enfocamos en generar resultados medibles y tangibles.
+
+Metodología de Trabajo:
+1. Reunión inicial: Entendemos las necesidades y objetivos del cliente.
+2. Propuesta: Presentamos una propuesta detallada con alcance, tiempos, y costos.
+3. Diseño: Creamos mockups y prototipos para aprobación del cliente.
+4. Desarrollo: Implementamos la solución con metodologías ágiles (Scrum).
+5. Testing: Pruebas exhaustivas para garantizar calidad.
+6. Lanzamiento: Deploy en producción y capacitación al cliente.
+7. Soporte: Mantenimiento y soporte post-lanzamiento.
+
+Tecnologías que Utilizamos:
+- Frontend: React, Next.js, Vue.js, Angular, HTML5, CSS3, Tailwind CSS
+- Backend: Node.js, Python, Java, Spring Boot, Django, Laravel
+- Móvil: React Native, Flutter, Kotlin, Swift
+- Bases de Datos: PostgreSQL, MySQL, MongoDB, Firebase
+- Cloud: AWS, Google Cloud, Azure, Vercel, Netlify
+- E-commerce: WooCommerce, Shopify, Magento, desarrollo custom
+- Marketing: Google Analytics, Google Ads, Facebook Business, HubSpot
+
+Certificaciones:
+- Google Partner Certificado
+- Meta Business Partner
+- AWS Certified Developer
+- Scrum Master Certificado
+
+Contacto:
+- Email: hola@tumarca.ar
+- WhatsApp: +54 9 11 4146-1312
+- Web: www.tumarca.ar
+- Instagram: @tumarca.ar
+- LinkedIn: /company/tumarca
+- Ubicación: Buenos Aires, Argentina (atendemos clientes en todo el país)

@@ -1,0 +1,32 @@
+SERVICIOS DE TUMARCA.AR
+
+Desarrollo Web Profesional:
+- Landing Pages: Páginas de aterrizaje optimizadas para conversión. Diseño moderno, responsive, con formularios de contacto integrados. Tiempo de entrega: 1-2 semanas.
+- Sitios Corporativos: Webs profesionales para empresas con múltiples secciones, blog integrado, y panel de administración. Ideal para pymes y emprendimientos. Tiempo de entrega: 3-4 semanas.
+- E-commerce: Tiendas online completas con catálogo de productos, carrito de compras, pasarelas de pago (MercadoPago, PayPal), gestión de stock y envíos. Tiempo de entrega: 4-6 semanas.
+- Sistemas Web a Medida: Desarrollo de aplicaciones web personalizadas según necesidades específicas del cliente. Incluye backend, frontend, base de datos y panel de administración.
+
+Desarrollo de Aplicaciones Móviles:
+- Apps Nativas: Desarrollo para Android e iOS con tecnologías nativas (Kotlin, Swift).
+- Apps Híbridas: Aplicaciones multiplataforma con React Native o Flutter.
+- Integración con APIs: Conexión con sistemas externos, bases de datos, y servicios de terceros.
+
+Branding y Diseño:
+- Identidad Visual: Logos, paleta de colores, tipografía, manual de marca completo.
+- Diseño UI/UX: Interfaces de usuario intuitivas y atractivas para web y móvil.
+- Material de Marketing: Tarjetas personales, banners, posts para redes sociales.
+
+Marketing Digital:
+- SEO: Posicionamiento en buscadores, optimización on-page y off-page, keywords research.
+- Gestión de Redes Sociales: Creación de contenido, programación de posts, análisis de métricas.
+- Campañas Publicitarias: Google Ads, Facebook Ads, Instagram Ads con segmentación avanzada.
+
+Soluciones con Inteligencia Artificial:
+- Chatbots Inteligentes: Asistentes virtuales para atención al cliente 24/7.
+- Automatización de Procesos: Flujos de trabajo automatizados con IA.
+- Análisis de Datos: Dashboards y reportes con machine learning.
+
+Soporte y Mantenimiento:
+- Mantenimiento Web: Actualizaciones de seguridad, backups, monitoreo 24/7.
+- Hosting y Dominio: Servicios de alojamiento web con SSL incluido.
+- Soporte Técnico: Asistencia remota y presencial para problemas técnicos.
