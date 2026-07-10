@@ -1,8 +1,12 @@
 package ar.tumarca.backend.controller;
 
+import ar.tumarca.backend.tools.ClienteTool;
 import ar.tumarca.backend.tools.ContactoTool;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
+import org.springframework.ai.rag.advisor.RetrievalAugmentationAdvisor;
+import org.springframework.ai.rag.retrieval.search.VectorStoreDocumentRetriever;
+import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.tool.ToolCallbackProvider;
 import org.springframework.ai.tool.method.MethodToolCallbackProvider;
@@ -16,41 +20,54 @@ public class ChatController {
 
     public ChatController(ChatClient.Builder chatClientBuilder,
                           ChatMemory chatMemory,
-                          ContactoTool contactoTool) {
+                          ContactoTool contactoTool,
+                          ClienteTool clienteTool,
+                          VectorStore vectorStore) {
 
         // Registrar las herramientas
         ToolCallbackProvider tools = MethodToolCallbackProvider.builder()
-                .toolObjects(contactoTool)
+                .toolObjects(contactoTool, clienteTool)
                 .build();
 
         this.chatClient = chatClientBuilder
                 .defaultSystem("""
-    Eres un asistente virtual de tumarca.ar, una agencia de desarrollo web en Buenos Aires, Argentina.
-    
-    INSTRUCCIONES CRÍTICAS:
-    - SIEMPRE responde en español
-    - DEBES usar el contexto proporcionado (documentos entre etiquetas <context>) para responder
-    - NUNCA inventes información - si no está en el contexto, dilo claramente
-    - Cuando el contexto contenga información relevante, ÚSALA para responder
-    - Sé específico y menciona datos concretos del contexto
-    
-    SOBRE EL CONTEXTO:
-    - El contexto contiene información real sobre servicios, casos de éxito, tecnologías y metodología de tumarca.ar
-    - Cuando te pregunten sobre experiencia, menciona los casos de éxito específicos del contexto
-    - Cuando te pregunten sobre tecnologías, lista las tecnologías específicas del contexto
-    - Cuando te pregunten sobre proceso, explica los pasos específicos del contexto
-    
-    REGLAS DE RESPUESTA:
-    1. Si el contexto tiene información relevante, úsala
-    2. Si no hay información en el contexto, di: "No tengo información específica sobre eso en este momento"
-    3. Al final, invita a contactarse por WhatsApp al +54 9 11 4146-1312
-    
-    EJEMPLOS:
-    - Pregunta: "¿Tienen experiencia en e-commerce?"
-    - Respuesta correcta: "Sí, tenemos experiencia. Por ejemplo, desarrollamos una tienda online para 'El Horno de Oro'..."
-    - Respuesta incorrecta: "Sí , tenemos experiencia en e-commerce" (sin detalles específicos)
-    """)
-                .defaultAdvisors(MessageChatMemoryAdvisor.builder(chatMemory).build())
+                    Eres un asistente virtual de tumarca.ar, una agencia de desarrollo web en Buenos Aires, Argentina.
+                    
+                    INSTRUCCIONES CRÍTICAS:
+                    - SIEMPRE responde en español
+                    - Usa el contexto proporcionado entre etiquetas <context> para responder
+                    - Si el contexto tiene información relevante, úsala para responder
+                    - Sé específico y menciona datos concretos del contexto
+                    - Si no hay información en el contexto, di: "No tengo información específica sobre eso"
+                    
+                    SOBRE EL CONTEXTO:
+                    - El contexto contiene información real sobre servicios, casos de éxito, tecnologías y metodología de tumarca.ar
+                    - Cuando te pregunten sobre experiencia, menciona los casos de éxito específicos
+                    - Cuando te pregunten sobre tecnologías, lista las tecnologías específicas
+                    - Cuando te pregunten sobre proceso, explica los pasos específicos
+                    
+                    HERRAMIENTAS DISPONIBLES:
+                    - listarClientes: Lista clientes de la base de datos
+                    - registrarCliente: Registra un nuevo cliente
+                    - obtenerContacto: Muestra información de contacto
+                    - obtenerPrecio: Muestra precios de servicios
+                    - listarServicios: Lista todos los servicios
+                    
+                    Al final, invita a contactarse por WhatsApp al +54 9 11 4146-1312
+                    """)
+
+                .defaultAdvisors(
+                        MessageChatMemoryAdvisor.builder(chatMemory).build(),
+                        RetrievalAugmentationAdvisor.builder()
+                                .documentRetriever(
+                                        VectorStoreDocumentRetriever.builder()
+                                                .vectorStore(vectorStore)
+                                                .similarityThreshold(0.0)  // ← CAMBIAR
+                                                .topK(5)                    // ← CAMBIAR
+                                                .build()
+                                )
+                                .build()
+                )
                 .defaultToolCallbacks(tools)
                 .build();
     }
@@ -63,6 +80,22 @@ public class ChatController {
                         request.conversationId()))
                 .call()
                 .content();
+    }
+
+    @GetMapping("/tools")
+    public String getTools() {
+        return """
+        ✅ Herramientas configuradas en la aplicación:
+        
+        1. listarClientes - Lista clientes de la base de datos
+        2. registrarCliente - Registra un nuevo cliente
+        3. obtenerContacto - Muestra información de contacto
+        4. obtenerPrecio - Muestra precios de servicios
+        5. listarServicios - Lista todos los servicios
+        
+        Si ves esta lista, las herramientas están configuradas.
+        El problema es que el modelo no las está invocando.
+        """;
     }
 
     public record ChatRequest(String message, String conversationId) {}

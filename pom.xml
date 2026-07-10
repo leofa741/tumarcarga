@@ -37,6 +37,12 @@
             <version>${spring-ai.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-rag</artifactId>
+            <version>${spring-ai.version}</version>
+        </dependency>
+
         <!-- ✅ CORRECTO: -->
         <dependency>
             <groupId>org.springframework.ai</groupId>
@@ -64,12 +70,20 @@
             <version>${spring-ai.version}</version>
         </dependency>
 
+        <!-- Spring Boot Mail -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+
         <!-- Spring AI - Tika Document Reader (para leer archivos de texto) -->
         <dependency>
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-tika-document-reader</artifactId>
             <version>${spring-ai.version}</version>
         </dependency>
+
+
 
         <!-- Lombok -->
         <dependency>

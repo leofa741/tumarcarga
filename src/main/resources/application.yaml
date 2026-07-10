@@ -1,21 +1,21 @@
 spring:
   ai:
     openai:
-      api-key: ${GROQ_API_KEY}
-      base-url: https://api.groq.com/openai
+      api-key: ${GROQ_API_KEY}  # ← Volver a Groq
+      base-url: https://api.groq.com/openai  # ← Volver a Groq
       chat:
         options:
-          model: llama-3.3-70b-versatile
+          model: llama-3.3-70b-versatile  # ← Volver a Llama 3.3
           temperature: 0.7
       embedding:
-        enabled: false  # ← Deshabilitar embeddings de OpenAI
+        enabled: false
 
     ollama:
       base-url: http://localhost:11434
       chat:
-        enabled: false  # ← Deshabilitar chat de Ollama
+        enabled: false
       embedding:
-        enabled: true   # ← Habilitar SOLO embeddings de Ollama
+        enabled: true
         options:
           model: nomic-embed-text
 
@@ -36,5 +36,24 @@ spring:
     init:
       mode: always
 
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: infoplataformaweb@gmail.com
+    password: ijfn tupa xird pfij
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+logging:
+  level:
+    org.springframework.ai: DEBUG
+    ar.tumarca.backend: DEBUG
+
 server:
   port: 8080
+
+
