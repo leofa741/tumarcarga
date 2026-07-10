@@ -2,6 +2,9 @@ package ar.tumarca.backend.controller;
 
 import ar.tumarca.backend.tools.ClienteTool;
 import ar.tumarca.backend.tools.ContactoTool;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.ai.rag.advisor.RetrievalAugmentationAdvisor;
@@ -10,6 +13,7 @@ import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.tool.ToolCallbackProvider;
 import org.springframework.ai.tool.method.MethodToolCallbackProvider;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -55,15 +59,14 @@ public class ChatController {
                     
                     Al final, invita a contactarse por WhatsApp al +54 9 11 4146-1312
                     """)
-
                 .defaultAdvisors(
                         MessageChatMemoryAdvisor.builder(chatMemory).build(),
                         RetrievalAugmentationAdvisor.builder()
                                 .documentRetriever(
                                         VectorStoreDocumentRetriever.builder()
                                                 .vectorStore(vectorStore)
-                                                .similarityThreshold(0.0)  // ← CAMBIAR
-                                                .topK(5)                    // ← CAMBIAR
+                                                .similarityThreshold(0.0)
+                                                .topK(5)
                                                 .build()
                                 )
                                 .build()
@@ -73,30 +76,51 @@ public class ChatController {
     }
 
     @PostMapping("/chat")
-    public String chat(@RequestBody ChatRequest request) {
-        return chatClient.prompt()
-                .user(request.message())
-                .advisors(spec -> spec.param("chat_memory_conversation_id",
-                        request.conversationId()))
-                .call()
-                .content();
+    public ResponseEntity<ChatResponse> chat(@Valid @RequestBody ChatRequest request) {
+        try {
+            String response = chatClient.prompt()
+                    .user(request.message())
+                    .advisors(spec -> spec.param("chat_memory_conversation_id",
+                            request.conversationId()))
+                    .call()
+                    .content();
+
+            return ResponseEntity.ok(new ChatResponse(response, request.conversationId()));
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError()
+                    .body(new ChatResponse("Error al procesar tu mensaje. Por favor, intenta nuevamente.",
+                            request.conversationId()));
+        }
     }
 
     @GetMapping("/tools")
-    public String getTools() {
-        return """
-        ✅ Herramientas configuradas en la aplicación:
-        
-        1. listarClientes - Lista clientes de la base de datos
-        2. registrarCliente - Registra un nuevo cliente
-        3. obtenerContacto - Muestra información de contacto
-        4. obtenerPrecio - Muestra precios de servicios
-        5. listarServicios - Lista todos los servicios
-        
-        Si ves esta lista, las herramientas están configuradas.
-        El problema es que el modelo no las está invocando.
-        """;
+    public ResponseEntity<ToolsResponse> getTools() {
+        return ResponseEntity.ok(new ToolsResponse(
+                "Herramientas configuradas en la aplicación",
+                new String[]{
+                        "listarClientes - Lista clientes de la base de datos",
+                        "registrarCliente - Registra un nuevo cliente",
+                        "obtenerContacto - Muestra información de contacto",
+                        "obtenerPrecio - Muestra precios de servicios",
+                        "listarServicios - Lista todos los servicios"
+                }
+        ));
     }
 
-    public record ChatRequest(String message, String conversationId) {}
+    // Request con validación
+    public record ChatRequest(
+            @NotBlank(message = "El mensaje es obligatorio")
+            @Size(min = 1, max = 2000, message = "El mensaje debe tener entre 1 y 2000 caracteres")
+            String message,
+
+            @NotBlank(message = "El conversationId es obligatorio")
+            @Size(max = 100, message = "El conversationId no puede tener más de 100 caracteres")
+            String conversationId
+    ) {}
+
+    // Response estructurado
+    public record ChatResponse(String reply, String conversationId) {}
+
+    // Response para tools
+    public record ToolsResponse(String description, String[] tools) {}
 }
