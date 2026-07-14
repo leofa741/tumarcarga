@@ -1,0 +1,76 @@
+METODOLOGÍA DE TRABAJO DE TUMARCA.AR
+
+NUESTRO PROCESO EN 7 PASOS:
+
+PASO 1: REUNIÓN INICIAL (Día 1-2)
+- Entendemos tu negocio, objetivos y necesidades
+- Analizamos tu competencia y mercado
+- Definimos el alcance del proyecto
+- Identificamos KPIs y métricas de éxito
+- Duración: 1-2 horas de reunión + análisis
+
+PASO 2: PROPUESTA DETALLADA (Día 3-5)
+- Presentamos propuesta con alcance, tiempos y costos
+- Definimos entregables concretos
+- Establecemos cronograma con hitos
+- Acordamos forma de pago y condiciones
+- Firmamos contrato con todas las condiciones claras
+
+PASO 3: DISEÑO Y PROTOTIPADO (Semana 1-2)
+- Creamos wireframes de baja fidelidad
+- Diseñamos mockups de alta fidelidad en Figma
+- Presentamos propuestas de diseño
+- 2 rondas de revisiones incluidas
+- Aprobación final del diseño antes de desarrollar
+
+PASO 4: DESARROLLO (Semanas 2-6 según proyecto)
+- Metodología ágil Scrum con sprints de 1-2 semanas
+- Reuniones semanales de seguimiento
+- Acceso a tablero Kanban con progreso en tiempo real
+- Entregas parciales para feedback continuo
+- Código versionado en GitHub con acceso para el cliente
+
+PASO 5: TESTING Y QA (Semana final del desarrollo)
+- Pruebas funcionales exhaustivas
+- Testing de usabilidad
+- Pruebas de rendimiento y velocidad
+- Testing cross-browser y responsive
+- Pruebas de seguridad básicas
+- Corrección de bugs encontrados
+
+PASO 6: LANZAMIENTO (1-2 días)
+- Deploy en servidor de producción
+- Configuración de dominio y SSL
+- Migración de datos si aplica
+- Capacitación al cliente (2-4 horas)
+- Documentación técnica entregada
+- Checklist de lanzamiento completado
+
+PASO 7: SOPORTE POST-LANZAMIENTO (3 meses)
+- 3 meses de garantía contra bugs
+- Soporte por email y WhatsApp
+- Monitoreo de rendimiento
+- Actualizaciones de seguridad
+- Reportes mensuales de métricas
+- Opción de contratar mantenimiento continuo
+
+HERRAMIENTAS QUE USAMOS:
+- Comunicación: Slack, WhatsApp, Email
+- Gestión de proyectos: Jira, Trello, Notion
+- Diseño: Figma, Adobe Creative Suite
+- Desarrollo: GitHub, VS Code
+- Testing: Jest, Cypress, Postman
+- Deploy: Vercel, AWS, Docker
+
+FRECUENCIA DE COMUNICACIÓN:
+- Reunión semanal de seguimiento (30-60 min)
+- Reporte quincenal de progreso
+- Comunicación diaria por Slack/WhatsApp para consultas urgentes
+- Acceso 24/7 al tablero de proyecto
+
+GARANTÍAS:
+- 3 meses de garantía contra bugs
+- Código fuente propiedad del cliente
+- Documentación técnica completa
+- Capacitación incluida
+- Soporte post-lanzamiento

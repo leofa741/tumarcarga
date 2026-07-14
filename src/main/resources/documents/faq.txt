@@ -1,0 +1,37 @@
+PREGUNTAS FRECUENTES DE TUMARCA.AR
+
+¿Cuánto tiempo tarda un proyecto web?
+Depende de la complejidad. Una landing page básica: 1-2 semanas. Sitio corporativo: 3-4 semanas. E-commerce: 4-8 semanas. App móvil: 2-4 meses.
+
+¿Ofrecen mantenimiento después del lanzamiento?
+Sí, ofrecemos planes de mantenimiento mensual desde USD $100/mes que incluyen actualizaciones, backups, monitoreo y soporte técnico.
+
+¿Trabajan con clientes fuera de Argentina?
+Sí, atendemos clientes en toda Latinoamérica y España de forma 100% remota. Nos adaptamos a diferentes zonas horarias.
+
+¿Qué incluye el SEO mensual?
+Optimización on-page, investigación de keywords, optimización de velocidad, reportes mensuales de rendimiento, y recomendaciones de contenido.
+
+¿Puedo ver ejemplos de trabajos anteriores?
+Sí, tenemos casos de éxito como "El Horno de Oro" (e-commerce de panadería con 300% aumento en ventas) y "Style Boutique" (tienda de ropa con 15,000 visitas mensuales).
+
+¿Cómo es el proceso de pago?
+50% al inicio del proyecto y 50% contra entrega. Para proyectos grandes, podemos dividir en 3 o 4 pagos según hitos.
+
+¿Ofrecen hosting y dominio?
+Sí, podemos gestionar el hosting y dominio por ti. Trabajamos con AWS, Google Cloud, Vercel y otros proveedores según las necesidades del proyecto.
+
+¿Qué tecnologías utilizan?
+Frontend: React, Next.js, Vue.js, Angular. Backend: Node.js, Python, Java Spring Boot. Móvil: React Native, Flutter. Bases de datos: PostgreSQL, MySQL, MongoDB.
+
+¿Puedo hacer cambios después del lanzamiento?
+Sí, todos nuestros proyectos incluyen un período de soporte post-lanzamiento. Además, ofrecemos capacitación para que puedas hacer cambios básicos.
+
+¿Trabajan con metodologías ágiles?
+Sí, usamos Scrum con sprints de 1-2 semanas. Tendrás reuniones semanales de seguimiento y acceso a un tablero Kanban para ver el progreso en tiempo real.
+
+¿Qué pasa si no me gusta el diseño?
+Incluimos 2 rondas de revisiones en el diseño. Si después de eso necesitas cambios adicionales, se cotizan por separado.
+
+¿Ofrecen garantía sobre el trabajo?
+Sí, todos nuestros desarrollos tienen 3 meses de garantía contra bugs. Si aparece un error en ese período, lo solucionamos sin costo.

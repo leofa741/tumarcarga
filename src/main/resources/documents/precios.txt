@@ -1,0 +1,187 @@
+PRECIOS Y PAQUETES DE TUMARCA.AR
+
+Todos los precios son referenciales en USD. El precio final depende de los requerimientos específicos.
+
+═══════════════════════════════════════
+DESARROLLO WEB
+═══════════════════════════════════════
+
+WEB BÁSICA (LANDING PAGE) - Desde USD $300
+- Diseño responsive (móvil, tablet, desktop)
+- Hasta 5 secciones
+- Formulario de contacto funcional
+- Integración con redes sociales
+- SEO básico on-page
+- Optimización de velocidad
+- Entrega: 1-2 semanas
+- Ideal para: emprendedores, negocios locales, eventos
+
+WEB INTERMEDIA (CORPORATIVA) - Desde USD $800
+- Hasta 10 páginas
+- Blog integrado
+- SEO básico + configuración Google Analytics
+- Integración con redes sociales
+- Galería de imágenes/portfolio
+- Formulario de contacto avanzado
+- Mapa de Google
+- Entrega: 3-4 semanas
+- Ideal para: PyMEs, profesionales, consultoras
+
+WEB AVANZADA (A MEDIDA) - Desde USD $1,500
+- Funcionalidades personalizadas
+- Panel de administración
+- Integraciones con APIs externas
+- Sistema de usuarios/roles
+- Base de datos personalizada
+- SEO avanzado
+- Entrega: 4-8 semanas
+- Ideal para: empresas medianas, proyectos complejos
+
+═══════════════════════════════════════
+E-COMMERCE
+═══════════════════════════════════════
+
+E-COMMERCE BÁSICO - Desde USD $2,000
+- Hasta 50 productos
+- Carrito de compras
+- Pasarela de pago (MercadoPago/Stripe)
+- Gestión de stock básica
+- Panel de administración
+- SEO básico
+- Entrega: 4-6 semanas
+
+E-COMMERCE AVANZADO - Desde USD $3,500
+- Productos ilimitados
+- Múltiples pasarelas de pago
+- Cupones y descuentos
+- Sistema de reseñas
+- Integración con sistemas de envío
+- Email marketing automatizado
+- Entrega: 6-10 semanas
+
+═══════════════════════════════════════
+APPS MÓVILES
+═══════════════════════════════════════
+
+APP MÓVIL BÁSICA - Desde USD $3,000
+- iOS o Android (uno)
+- Hasta 10 pantallas
+- Integración con API existente
+- Push notifications básicas
+- Entrega: 2-3 meses
+
+APP MÓVIL COMPLETA - Desde USD $6,000
+- iOS y Android (ambos)
+- Pantallas ilimitadas
+- Backend API incluido
+- Autenticación de usuarios
+- Pagos in-app
+- Push notifications avanzadas
+- Entrega: 3-5 meses
+
+═══════════════════════════════════════
+BRANDING
+═══════════════════════════════════════
+
+PAQUETE BÁSICO - Desde USD $400
+- Logo profesional
+- 3 propuestas iniciales
+- 2 rondas de revisión
+- Paleta de colores
+- Tipografías recomendadas
+- Archivos en múltiples formatos
+
+PAQUETE COMPLETO - Desde USD $800
+- Todo lo del básico
+- Manual de marca completo
+- Papelería corporativa (tarjetas, membrete)
+- Plantillas para redes sociales
+- Guía de aplicación de marca
+
+═══════════════════════════════════════
+MARKETING DIGITAL
+═══════════════════════════════════════
+
+SEO MENSUAL - Desde USD $200/mes
+- Optimización on-page
+- Investigación de keywords
+- Optimización de velocidad
+- Reportes mensuales
+- Recomendaciones de contenido
+- Contrato mínimo: 3 meses
+
+GESTIÓN DE REDES SOCIALES - Desde USD $300/mes
+- 3 redes sociales
+- 12 publicaciones mensuales
+- Diseño de piezas gráficas
+- community management básico
+- Reporte mensual
+
+CAMPANAS GOOGLE ADS - Desde USD $250/mes + pauta
+- Configuración de campañas
+- Optimización continua
+- Reportes semanales
+- Gestión del presupuesto publicitario
+- Sin contrato mínimo
+
+PAQUETE MARKETING 360° - Desde USD $700/mes
+- SEO + Redes Sociales + Google Ads
+- Estrategia integral
+- Reportes consolidados
+- Reunión mensual de estrategia
+
+═══════════════════════════════════════
+SOPORTE Y MANTENIMIENTO
+═══════════════════════════════════════
+
+PLAN BÁSICO - USD $100/mes
+- Actualizaciones de seguridad
+- Backups semanales
+- Monitoreo de uptime
+- Soporte por email (respuesta en 24hs)
+- Hasta 2 horas de cambios mensuales
+
+PLAN PROFESIONAL - USD $250/mes
+- Todo lo del básico
+- Backups diarios
+- Soporte prioritario (respuesta en 4hs)
+- Hasta 5 horas de cambios mensuales
+- Reportes mensuales de rendimiento
+
+PLAN PREMIUM - USD $500/mes
+- Todo lo del profesional
+- Soporte 24/7
+- Hasta 15 horas de cambios mensuales
+- Optimización continua de rendimiento
+- Consultoría estratégica mensual
+
+═══════════════════════════════════════
+FORMAS DE PAGO
+═══════════════════════════════════════
+
+- Transferencia bancaria
+- MercadoPago (con recargo)
+- Tarjeta de crédito (hasta 6 cuotas sin interés)
+- Criptomonedas (USDT, BTC, ETH)
+- PayPal (para clientes internacionales)
+
+PROYECTOS GRANDES:
+- 50% al inicio, 50% contra entrega
+- O dividir en 3-4 pagos según hitos
+- Facturación en pesos o dólares
+
+DESCUENTOS:
+- 10% por pago total anticipado
+- 15% para ONGs y emprendimientos sociales
+- Precios especiales para clientes recurrentes
+
+═══════════════════════════════════════
+PRESUPUESTO PERSONALIZADO
+═══════════════════════════════════════
+
+¿Necesitas un presupuesto exacto? Contáctanos:
+📱 WhatsApp: +54 9 11 4146-1312
+📧 Email: hola@tumarca.ar
+🌐 Web: www.tumarca.ar
+
+Respuesta en menos de 24 horas hábiles.

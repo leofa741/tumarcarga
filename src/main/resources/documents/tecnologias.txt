@@ -1,0 +1,77 @@
+STACK TECNOLÓGICO DE TUMARCA.AR
+
+FRONTEND:
+- React.js: Biblioteca principal para interfaces dinámicas
+- Next.js: Framework React para SEO y rendimiento óptimo
+- Angular: Para aplicaciones empresariales complejas
+- HTML5 y CSS3: Bases sólidas de la web moderna
+- Tailwind CSS: Framework CSS utilitario para diseño rápido
+- TypeScript: JavaScript con tipado para mayor robustez
+- Redux y Context API: Gestión de estado
+- Framer Motion: Animaciones profesionales
+
+BACKEND:
+- Node.js con Express: Servidor JavaScript rápido y escalable
+- Java con Spring Boot: Robustez empresarial
+- Python con Django/FastAPI: Ideal para IA y datos
+- NestJS: Arquitectura modular para Node.js
+- GraphQL: APIs flexibles y eficientes
+- REST APIs: Estándar de la industria
+
+MOBILE:
+- React Native: Apps nativas para iOS y Android con un solo código
+- Flutter: Framework de Google para apps multiplataforma
+- Kotlin: Desarrollo nativo Android
+- Swift: Desarrollo nativo iOS
+- Expo: Ecosistema para React Native
+
+BASES DE DATOS:
+- PostgreSQL: Base de datos relacional robusta
+- MySQL: Popular y confiable
+- MongoDB: Base de datos NoSQL para flexibilidad
+- Firebase: Backend as a Service de Google
+- Redis: Caché de alto rendimiento
+- Supabase: Alternativa open source a Firebase
+
+CLOUD Y DEVOPS:
+- AWS (Amazon Web Services): Líder del mercado
+- Google Cloud Platform: Integración con servicios Google
+- Vercel: Deploy optimizado para Next.js
+- Netlify: Hosting moderno para sitios estáticos
+- Docker: Contenedores para consistencia
+- Kubernetes: Orquestación de contenedores
+- GitHub Actions: CI/CD automatizado
+
+E-COMMERCE:
+- Desarrollo custom: Soluciones a medida
+- Stripe y MercadoPago: Pasarelas de pago
+
+MARKETING Y ANALYTICS:
+- Google Analytics 4: Métricas web
+- Google Tag Manager: Gestión de tags
+- Google Ads: Publicidad en Google
+- Facebook Business: Publicidad en Meta
+- HubSpot: CRM y marketing automation
+- Mailchimp: Email marketing
+- Hotjar: Análisis de comportamiento
+
+INTELIGENCIA ARTIFICIAL:
+- OpenAI GPT: Modelos de lenguaje avanzados
+- Anthropic Claude: IA conversacional
+- LangChain: Framework para aplicaciones con LLMs
+- Hugging Face: Modelos open source
+- TensorFlow y PyTorch: Deep learning
+- Computer Vision: Análisis de imágenes
+
+HERRAMIENTAS DE DISEÑO:
+- Figma: Diseño UI/UX colaborativo
+- Adobe Creative Suite: Photoshop, Illustrator, XD
+- Sketch: Diseño para Mac
+- InVision: Prototipado interactivo
+
+METODOLOGÍAS:
+- Scrum: Framework ágil
+- Kanban: Gestión visual de tareas
+- DevOps: Integración desarrollo-operaciones
+- TDD (Test-Driven Development): Desarrollo guiado por tests
+- CI/CD: Integración y entrega continua
