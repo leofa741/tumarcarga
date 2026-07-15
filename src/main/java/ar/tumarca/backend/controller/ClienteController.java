@@ -25,16 +25,6 @@ public class ClienteController {
         this.clienteTool = clienteTool;
     }
 
-    @GetMapping("/clientes")
-    public ResponseEntity<String> listarClientes() {
-        try {
-            String resultado = clienteTool.listarClientes();
-            return ResponseEntity.ok(resultado);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Error al listar clientes: " + e.getMessage());
-        }
-    }
 
     @PostMapping("/clientes")
     public ResponseEntity<?> registrarCliente(@Valid @RequestBody ClienteRequest request) {
@@ -49,12 +39,13 @@ public class ClienteController {
             );
             return ResponseEntity.status(HttpStatus.CREATED).body(resultado);
         } catch (Exception e) {
+            System.err.println("❌ Error al registrar cliente: " + e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(Map.of("error", "Error al registrar cliente", "details", e.getMessage()));
+                    .body(Map.of("error", "Error al registrar cliente", "details", "Ocurrió un error interno"));
         }
     }
 
-    // Manejador de errores de validación
+    // Manejador de errores de validación (¡Excelente práctica!)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, String>> handleValidationExceptions(
             MethodArgumentNotValidException ex) {
@@ -67,7 +58,7 @@ public class ClienteController {
         return ResponseEntity.badRequest().body(errors);
     }
 
-    // Record con validaciones
+    // Record con validaciones estrictas (¡Perfecto!)
     public record ClienteRequest(
             @NotBlank(message = "El nombre es obligatorio")
             @Size(min = 2, max = 100, message = "El nombre debe tener entre 2 y 100 caracteres")
@@ -84,7 +75,7 @@ public class ClienteController {
             @Size(max = 100, message = "La empresa no puede tener más de 100 caracteres")
             String empresa,
 
-            @Size(max = 500, message = "El proyecto no puede tener más de 500 caracteres")
+            @Size(max = 1000, message = "El proyecto no puede tener más de 1000 caracteres") // Aumentado un poco para proyectos detallados
             String proyecto,
 
             @Size(max = 200, message = "Los servicios de interés no pueden tener más de 200 caracteres")
