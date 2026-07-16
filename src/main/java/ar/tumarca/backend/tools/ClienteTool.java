@@ -7,8 +7,13 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import java.net.URI;
+import java.net.URLEncoder;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 
@@ -17,6 +22,20 @@ public class ClienteTool {
 
     private final JdbcTemplate jdbcTemplate;
     private final JavaMailSender mailSender;
+
+    // Cliente HTTP nativo de Java (no requiere dependencias extra en pom.xml)
+    private final HttpClient httpClient = HttpClient.newHttpClient();
+
+    // ⚙️ ========================================================================
+    // ⚙️ CREDENCIALES DE TELEGRAM
+    // ⚙️ ========================================================================
+    private static final String TELEGRAM_BOT_TOKEN = "8228507019:AAGxUlM5MDpv1vux5JMAO4X5nT3uwXDGC94";
+    private static final String TELEGRAM_CHAT_ID = "8874664977";
+
+    // ⚙️ ========================================================================
+    // ⚙️ EMAIL DEL EQUIPO (Para recibir las notificaciones internas por correo)
+    // ⚙️ ========================================================================
+    private static final String EMAIL_EQUIPO = "hola@tumarca.ar"; // 👈 ¡CAMBIA ESTO por tu email real!
 
     public ClienteTool(JdbcTemplate jdbcTemplate, JavaMailSender mailSender) {
         this.jdbcTemplate = jdbcTemplate;
@@ -47,11 +66,18 @@ public class ClienteTool {
             jdbcTemplate.update(sql, nombre, email, telefono, empresa, proyecto,
                     servicios_interes, score, calificacion, prioridad, LocalDateTime.now());
 
-            // 3. Enviar emails
+            // 3. Enviar email de confirmación al cliente
             enviarEmailConfirmacionCliente(nombre, email, calificacion);
+
+            // 4. Enviar email de notificación detallada al equipo interno
             enviarEmailNotificacionEquipo(nombre, email, empresa, proyecto, calificacion, score);
 
-            // 4. Crear notificación para el equipo
+            // 5. 🔥 NOTIFICACIÓN INSTANTÁNEA A TELEGRAM (Solo si es HOT o WARM, score >= 4)
+            if (score >= 4) {
+                enviarNotificacionTelegram(nombre, empresa, proyecto, calificacion, score);
+            }
+
+            // 6. Crear notificación para el equipo en la base de datos
             crearNotificacion(nombre, email, calificacion, score);
 
             return String.format("""
@@ -88,7 +114,6 @@ public class ClienteTool {
     private int calcularScore(String proyecto, String servicios, String empresa) {
         int score = 0;
 
-        // 1. Score por servicios (hasta 5 puntos)
         if (servicios != null) {
             String serv = servicios.toLowerCase();
             if (serv.contains("app_movil") || serv.contains("app")) score += 4;
@@ -102,15 +127,13 @@ public class ClienteTool {
             if (serv.contains("branding")) score += 1;
         }
 
-        // 2. Score por proyecto específico (hasta 3 puntos)
         if (proyecto != null && proyecto.length() > 20) {
             String proj = proyecto.toLowerCase();
             if (proj.contains("tienda") || proj.contains("ecommerce") || proj.contains("ventas")) score += 2;
             if (proj.contains("sistema") || proj.contains("plataforma") || proj.contains("app")) score += 2;
-            if (proj.length() > 100) score += 1; // Proyecto bien detallado
+            if (proj.length() > 100) score += 1;
         }
 
-        // 3. Score por empresa establecida (hasta 2 puntos)
         if (empresa != null && empresa.length() > 3) {
             score += 1;
             if (empresa.toLowerCase().contains("s.a.") ||
@@ -120,31 +143,21 @@ public class ClienteTool {
             }
         }
 
-        // Limitar a 10 puntos máximo
         return Math.min(score, 10);
     }
 
-    /**
-     * Convierte score en calificación textual
-     */
     private String obtenerCalificacion(int score) {
         if (score >= 7) return "🔥 HOT";
         if (score >= 4) return "🟡 WARM";
         return "🟢 COLD";
     }
 
-    /**
-     * Determina prioridad de contacto
-     */
     private String obtenerPrioridad(int score) {
         if (score >= 7) return "alta";
         if (score >= 4) return "media";
         return "baja";
     }
 
-    /**
-     * Envía email de confirmación al cliente
-     */
     private void enviarEmailConfirmacionCliente(String nombre, String email, String calificacion) {
         try {
             SimpleMailMessage message = new SimpleMailMessage();
@@ -179,14 +192,14 @@ public class ClienteTool {
     }
 
     /**
-     * Envía notificación al equipo interno
+     * ✉️ ENVÍA NOTIFICACIÓN DETALLADA POR EMAIL AL EQUIPO INTERNO
      */
     private void enviarEmailNotificacionEquipo(String nombre, String email, String empresa,
                                                String proyecto, String calificacion, int score) {
         try {
             SimpleMailMessage message = new SimpleMailMessage();
             message.setFrom("hola@tumarca.ar");
-            message.setTo("hola@tumarca.ar"); // Cambiar al email del equipo
+            message.setTo(EMAIL_EQUIPO); // 👈 Usa la constante definida arriba
             message.setSubject("🎯 NUEVO LEAD " + calificacion + ": " + nombre);
 
             String cuerpo = String.format("""
@@ -223,9 +236,6 @@ public class ClienteTool {
         }
     }
 
-    /**
-     * Crea notificación en base de datos
-     */
     private void crearNotificacion(String nombre, String email, String calificacion, int score) {
         try {
             String sql = """
@@ -247,6 +257,54 @@ public class ClienteTool {
 
         } catch (Exception e) {
             System.err.println("❌ Error creando notificación: " + e.getMessage());
+        }
+    }
+
+    /**
+     * 🔥 ENVÍA NOTIFICACIÓN INSTANTÁNEA A TU TELEGRAM PERSONAL
+     */
+    private void enviarNotificacionTelegram(String nombre, String empresa, String proyecto, String calificacion, int score) {
+        try {
+            String mensaje = String.format(
+                    "🚀 *NUEVO LEAD %s*\n\n" +
+                            "👤 *Nombre:* %s\n" +
+                            "🏢 *Empresa:* %s\n" +
+                            "📝 *Proyecto:* %s\n" +
+                            "💰 *Score:* %d/10\n\n" +
+                            "⏰ ¡Revisar y contactar ahora!",
+                    calificacion,
+                    nombre,
+                    (empresa != null && !empresa.trim().isEmpty()) ? empresa : "Particular",
+                    (proyecto != null && !proyecto.trim().isEmpty()) ? proyecto : "Sin detalles",
+                    score
+            );
+
+            String mensajeCodificado = URLEncoder.encode(mensaje, StandardCharsets.UTF_8).replace("+", "%20");
+
+            String url = String.format(
+                    "https://api.telegram.org/bot%s/sendMessage?chat_id=%s&text=%s&parse_mode=Markdown",
+                    TELEGRAM_BOT_TOKEN,
+                    TELEGRAM_CHAT_ID,
+                    mensajeCodificado
+            );
+
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(url))
+                    .GET()
+                    .build();
+
+            httpClient.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+                    .thenAccept(response -> {
+                        if (response.statusCode() == 200) {
+                            System.out.println("✅ Notificación Telegram enviada con éxito a Chat ID: " + TELEGRAM_CHAT_ID);
+                        } else {
+                            System.err.println("⚠️ Error al enviar Telegram. Código HTTP: " + response.statusCode());
+                            System.err.println("🔍 Respuesta de Telegram: " + response.body());
+                        }
+                    });
+
+        } catch (Exception e) {
+            System.err.println("⚠️ Fallo crítico al preparar notificación Telegram: " + e.getMessage());
         }
     }
 
