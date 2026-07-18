@@ -69,8 +69,8 @@ public class ClienteTool {
             // 3. Enviar email de confirmación al cliente
             enviarEmailConfirmacionCliente(nombre, email, calificacion);
 
-            // 4. Enviar email de notificación detallada al equipo interno
-            enviarEmailNotificacionEquipo(nombre, email, empresa, proyecto, calificacion, score);
+            // 4. Enviar email de notificación detallada al equipo interno (AHORA INCLUYE TELÉFONO)
+            enviarEmailNotificacionEquipo(nombre, email, telefono, empresa, proyecto, calificacion, score);
 
             // 5. 🔥 NOTIFICACIÓN INSTANTÁNEA A TELEGRAM (Solo si es HOT o WARM, score >= 4)
             if (score >= 4) {
@@ -108,9 +108,6 @@ public class ClienteTool {
         }
     }
 
-    /**
-     * Calcula el score del lead basado en múltiples factores
-     */
     private int calcularScore(String proyecto, String servicios, String empresa) {
         int score = 0;
 
@@ -192,15 +189,26 @@ public class ClienteTool {
     }
 
     /**
-     * ✉️ ENVÍA NOTIFICACIÓN DETALLADA POR EMAIL AL EQUIPO INTERNO
+     * ✉️ ENVÍA NOTIFICACIÓN DETALLADA POR EMAIL AL EQUIPO INTERNO (CORREGIDO CON TELÉFONO)
      */
-    private void enviarEmailNotificacionEquipo(String nombre, String email, String empresa,
+    private void enviarEmailNotificacionEquipo(String nombre, String email, String telefono, String empresa,
                                                String proyecto, String calificacion, int score) {
         try {
             SimpleMailMessage message = new SimpleMailMessage();
             message.setFrom("hola@tumarca.ar");
-            message.setTo(EMAIL_EQUIPO); // 👈 Usa la constante definida arriba
+            message.setTo(EMAIL_EQUIPO);
             message.setSubject("🎯 NUEVO LEAD " + calificacion + ": " + nombre);
+
+            String nombreCorto = nombre.split(" ")[0];
+            String whatsappLink = "No proporcionado";
+
+            // Si el cliente proporcionó un teléfono, creamos el enlace de WhatsApp correctamente
+            if (telefono != null && !telefono.trim().isEmpty()) {
+                // Limpiamos el teléfono de espacios o caracteres raros para la URL (dejamos solo números y el +)
+                String telefonoLimpio = telefono.replaceAll("[^0-9+]", "");
+                String mensajeWa = URLEncoder.encode("Hola " + nombreCorto + ", vi tu consulta en tumarca.ar", StandardCharsets.UTF_8);
+                whatsappLink = "https://wa.me/" + telefonoLimpio + "?text=" + mensajeWa;
+            }
 
             String cuerpo = String.format("""
                 🎯 NUEVO LEAD REGISTRADO
@@ -210,6 +218,7 @@ public class ClienteTool {
                 👤 DATOS DEL CLIENTE:
                 • Nombre: %s
                 • Email: %s
+                • Teléfono: %s
                 • Empresa: %s
                 • Proyecto: %s
                 
@@ -217,16 +226,17 @@ public class ClienteTool {
                 
                 🔗 Acciones rápidas:
                 • Responder email: mailto:%s
-                • WhatsApp: https://wa.me/?text=Hola %s, vi tu consulta en tumarca.ar
+                • WhatsApp: %s
                 
                 ---
                 Sistema automático de tumarca.ar
                 """, calificacion, score, nombre, email,
+                    (telefono != null && !telefono.trim().isEmpty()) ? telefono : "No proporcionado",
                     empresa != null ? empresa : "No especificada",
                     proyecto != null ? proyecto : "No especificado",
                     calificacion.contains("HOT") ? "INMEDIATO (2 horas)" :
                             calificacion.contains("WARM") ? "Hoy (24 horas)" : "Mañana (48 horas)",
-                    email, nombre.split(" ")[0]);
+                    email, whatsappLink);
 
             message.setText(cuerpo);
             mailSender.send(message);
